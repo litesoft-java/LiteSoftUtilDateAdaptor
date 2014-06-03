@@ -1,6 +1,4 @@
-jar: ./LiteSoftUtilDateAdaptor
-
-source: src|**.java
+jar: LiteSoftUtilDateAdaptor
 
 resources: $source$
 
