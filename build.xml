@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Litesoft Tools Build -->
+<project name="LiteSoftUtilDateAdaptor"        default="all" basedir="." >
+
+    <target name="all" depends="clean, jar" />
+
+    <target name="dirs">
+        <mkdir dir="build"/>
+    </target>
+
+    <target name="jar" depends="compile">
+        <jar jarfile="LiteSoftUtilDateAdaptor.jar">
+            <fileset dir="build" includes="**/*.class"/>
+            <fileset dir="src"/>
+        </jar>
+        <delete dir="build" />
+        <copy file="LiteSoftUtilDateAdaptor.jar"     preservelastmodified="true" todir="../libs"/>
+    </target>
+
+    <target name="clean">
+        <delete>
+            <fileset dir="." includes="build/**/*" />
+            <fileset dir="." includes="LiteSoftUtilDateAdaptor.jar" />
+        </delete>
+    </target>
+
+    <target name="compile" depends="dirs">
+        <javac srcdir="src" destdir="build" deprecation="off">
+            <include name="**/*.java" />
+        </javac>
+    </target>
+
+</project>
