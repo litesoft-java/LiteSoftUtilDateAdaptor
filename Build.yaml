@@ -1,4 +1,6 @@
 jar: LiteSoftUtilDateAdaptor
 
-resources: $source$
+resources: 
+- $source$
+- LICENSE
 
