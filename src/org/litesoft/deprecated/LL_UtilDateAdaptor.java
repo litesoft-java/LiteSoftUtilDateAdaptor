@@ -4,15 +4,13 @@ package org.litesoft.deprecated;
 import java.util.*;
 
 @SuppressWarnings({"UnusedDeclaration", "deprecation"})
-public class LL_UtilDateAdaptor
-{
+public class LL_UtilDateAdaptor {
     protected final int mUTCtoWallOffsetMinutes; // 0 = UTC, -600 = HT (Hawaii Time or more formally: HST = Alaska-Hawaii Standard Time)
     protected final int mTemporalFields; // 0 = Year, 1 = Year & Month, 2 = Year - Day, 3 = Year - Hour, 4 = Year - Min, 5 = Year - Sec, 6 = Year - MilliSec
     protected final int mYear, mMonth, mDay, mHour, mMin, mSec, mMilliSec;
 
     protected LL_UtilDateAdaptor( int pUTCtoWallOffsetMinutes, int pTemporalFields, //
-                                  int pYear, int pMonth, int pDay, int pHour, int pMin, int pSec, int pMilliSec )
-    {
+                                  int pYear, int pMonth, int pDay, int pHour, int pMin, int pSec, int pMilliSec ) {
         mUTCtoWallOffsetMinutes = pUTCtoWallOffsetMinutes;
         mTemporalFields = pTemporalFields;
         mYear = pYear;
@@ -24,8 +22,7 @@ public class LL_UtilDateAdaptor
         mMilliSec = pMilliSec;
     }
 
-    protected LL_UtilDateAdaptor( Date pWallDate, int pTemporalFields )
-    {
+    protected LL_UtilDateAdaptor( Date pWallDate, int pTemporalFields ) {
         mUTCtoWallOffsetMinutes = -pWallDate.getTimezoneOffset();
         int dMonth = 1;
         int dDay = 1;
@@ -33,8 +30,7 @@ public class LL_UtilDateAdaptor
         int dMin = 0;
         int dSec = 0;
         int dMilliSec = 0;
-        switch ( mTemporalFields = pTemporalFields )
-        {
+        switch ( mTemporalFields = pTemporalFields ) {
             case 6:
                 long zMillisSinceEpoch = pWallDate.getTime();
                 int zRawMilliSec = (int) (zMillisSinceEpoch % 1000L);
@@ -67,18 +63,15 @@ public class LL_UtilDateAdaptor
         mMilliSec = dMilliSec;
     }
 
-    public static int dayOfWeek( Date pWallDate )
-    {
+    public static int dayOfWeek( Date pWallDate ) {
         return pWallDate.getDay();
     }
 
-    public static long parseUtilDate( String pUtilDateToString )
-    {
+    public static long parseUtilDate( String pUtilDateToString ) {
         return Date.parse( pUtilDateToString );
     }
 
-    public static long UTC( int pYear, int pMonth, int pDay, int pHour, int pMin, int pSec, int pMilliSec )
-    {
+    public static long UTC( int pYear, int pMonth, int pDay, int pHour, int pMin, int pSec, int pMilliSec ) {
         return Date.UTC( pYear - 1900, pMonth - 1, pDay, pHour, pMin, pSec ) + pMilliSec;
     }
 }
